@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de Vente</title>
+    <style>
+        /* Styles pour la mise en page de la page de vente */
+        /* Vous pouvez personnaliser davantage selon vos besoins */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #222;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #fff;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .product img {
+            max-width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        /* Styles pour la mise en page de la page de paiement */
+        /* Vous pouvez personnaliser davantage selon vos besoins */
+        #page-vente {
+            display: block;
+        }
+        #page-paiement {
+            display: none;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #logiciel-info {
+            margin-top: 20px;
+            background-color: #333;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="page-vente">
+        <h1>Produits Crypto</h1>
+        <div class="product">
+            <img src="logiciel1.jpg" alt="Logiciel 1">
+            <div>
+                <p>Description du Logiciel 1 et ses fonctionnalités.</p>
+                <p>Prix : 100 $</p>
+                <button onclick="afficherPagePaiement('BTC')">Acheter avec Crypto</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="logiciel2.jpg" alt="Logiciel 2">
+            <div>
+                <p>Description du Logiciel 2 et ses fonctionnalités.</p>
+                <p>Prix : 150 $</p>
+                <button onclick="afficherPagePaiement('ETH')">Acheter avec Crypto</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="logiciel3.jpg" alt="Logiciel 3">
+            <div>
+                <p>Description du Logiciel 3 et ses fonctionnalités.</p>
+                <p>Prix : 200 $</p>
+                <button onclick="afficherPagePaiement('XMR')">Acheter avec Crypto</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="logiciel4.jpg" alt="Logiciel 4">
+            <div>
+                <p>Description du Logiciel 4 et ses fonctionnalités.</p>
+                <p>Prix : 250 $</p>
+                <button onclick="afficherPagePaiement('ZEC')">Acheter avec Crypto</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="logiciel5.jpg" alt="Logiciel 5">
+            <div>
+                <p>Description du Logiciel 5 et ses fonctionnalités.</p>
+                <p>Prix : 300 $</p>
+                <button onclick="afficherPagePaiement('BTC')">Acheter avec Crypto</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="page-paiement">
+        <h1>Paiement</h1>
+        <form>
+            <label for="pseudo">Pseudo :</label>
+            <input type="text" id="pseudo" required><br>
+
+            <label for="crypto">Choisissez votre cryptomonnaie :</label>
+            <select id="crypto">
+                <option value="BTC">Bitcoin (BTC)</option>
+                <option value="ETH">Ethereum (ETH)</option>
+                <option value="XMR">Monero (XMR)</option>
+                <option value="ZEC">Zcash (ZEC)</option>
+            </select><br>
+
+            <label for="email">Adresse e-mail :</label>
+            <input type="text" id="email" required><br>
+
+            <button onclick="traiterPaiement()">Payer</button>
+        </form>
+        <div id="logiciel-info">
+            <p>Le logiciel vous sera envoyé par e-mail à l'adresse que vous avez fournie.</p>
+            <p>Votre adresse crypto pour le paiement : <span id="adresse_crypto"></span></p>
+        </div>
+    </div>
+
+    <script>
+        const adressesCrypto = {
+            BTC: 'Votre adresse Bitcoin',
+            ETH: 'Votre adresse Ethereum',
+            XMR: 'Votre adresse Monero',
+            ZEC: 'Votre adresse Zcash'
+        };
+
+        function afficherPagePaiement(crypto) {
+            const pageVente = document.getElementById('page-vente');
+            const pagePaiement = document.getElementById('page-paiement');
+            const adresseCrypto = document.getElementById('adresse_crypto');
+            
+            const pseudo = document.getElementById('pseudo').value;
+            const email = document.getElementById('email').value;
+            
+            adresseCrypto.textContent = adressesCrypto[crypto];
+            
+            // Rediriger vers la page de paiement
+            pageVente.style.display = 'none';
+            pagePaiement.style.display = 'block';
+        }
+
+        function traiterPaiement() {
+            // Insérez ici la logique pour traiter le paiement en cryptomonnaie.
+            // Vous devrez utiliser une bibliothèque de gestion de cryptomonnaie.
+            
+            // Une fois le paiement traité avec succès, vous pouvez rediriger l'utilisateur vers une page de confirmation.
